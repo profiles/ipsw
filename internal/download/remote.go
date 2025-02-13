@@ -34,6 +34,7 @@ func NewRemoteZipReader(zipURL string, config *RemoteConfig) (*zip.Reader, error
 				TLSClientConfig: &tls.Config{InsecureSkipVerify: config.Insecure},
 			},
 		},
+		DisableAcceptRangesHeaderCheck: true,
 	})
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create ranger reader")
